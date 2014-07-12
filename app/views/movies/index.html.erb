@@ -1,0 +1,26 @@
+<h1> Movie List </h1>
+
+<div id="filter-parameters">
+	<%= form_tag '', :method => :get do %>
+		<%= label_tag 'Search by'%>
+		<%= select_tag 'filter', options_for_select(@filter_parameter.each{|value| value}), :include_blank => true %>
+		<%= label_tag 'Value' %>
+	  <%= text_field_tag :value %>
+	  <%= submit_tag 'Search', :name => nil %>
+	<% end %>
+</div>
+<br/>
+
+<div id="movies-data">
+	<table class="movies-table">
+		<tr> 
+			<%= render :partial => 'table_headers' %>
+		</tr>
+		<% @movies.each do |movie| %>
+			<tr>
+				<%= render :partial => 'movie_data', :locals => {:m => movie} %>
+			<% end %>
+		</tr>
+	</table>
+</div>
+

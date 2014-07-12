@@ -1,0 +1,15 @@
+<h1> Movie List </h1>
+
+<%= link_to :back, root_path %>
+
+<div id="movies-data">
+	<table class="movies-table">
+		<tr> 
+			<%= render :partial => 'table_headers' %>
+		</tr>
+		<tr>
+			<% @filtered_movies.each do |movie| %>
+				<%= render :partial => 'movie_data', :locals => {:m => movie} %>
+			<% end %>
+	</table>
+</div>
